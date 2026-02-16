@@ -1,44 +1,30 @@
-# Статический лендинг конференции (GitHub Pages)
+# Biotech & Food Tech 2026 — static site (RU + EN)
 
-Этот каталог можно загрузить в репозиторий GitHub и включить GitHub Pages.
+This folder contains a **pure static** landing site for GitHub Pages:
 
-## Быстрый старт (самый простой)
+- `index.html` — Russian (main)
+- `en/index.html` — English
+- `assets/` — CSS + images
 
-1) Откройте файл `index.html` двойным кликом — так вы увидите сайт локально.
+## Upload to GitHub Pages (quick)
 
-2) Создайте репозиторий на GitHub (например, `biotech-congress-2026`).
+1. Create / open your repository (e.g., `biotech-congress`).
+2. Upload **all files from this folder** to the repository root (so `index.html` is in the root).
+3. Go to **Settings → Pages**:
+   - Source: *Deploy from a branch*
+   - Branch: `main`
+   - Folder: `/ (root)`
+4. Save.
 
-3) Загрузите в репозиторий **все файлы** из этой папки:
-- `index.html`
-- папку `assets/`
-- `README.md`
+Your site will appear at:
 
-4) В GitHub:
-- зайдите в **Settings → Pages**
-- в разделе **Build and deployment** выберите:
-  - **Source:** Deploy from a branch
-  - **Branch:** `main` (или `master`) и папка `/ (root)`
-- сохраните.
+`https://<username>.github.io/<repo>/`
 
-5) GitHub покажет ссылку на опубликованный сайт вида `https://<username>.github.io/<repo>/`.
+English page:
 
-## Подключение домена (опционально)
+`https://<username>.github.io/<repo>/en/`
 
-Если хотите сайт на домене вида `myconf.com`, делается так:
+## Notes
 
-1) В GitHub: **Settings → Pages → Custom domain** — впишите домен.
-
-2) У регистратора домена настройте DNS:
-- для `www` обычно ставят `CNAME` на `<username>.github.io`
-- для корня домена (`myconf.com`) — `A` записи (GitHub даст/подскажет)
-
-3) После появления зелёной галочки включите **Enforce HTTPS**.
-
-## Где править контент
-
-- Основной текст — в `index.html`.
-- Оформление — в `assets/css/style.css`.
-- Логотипы партнеров — в `assets/img/`.
-
-Если захотите сделать 2–3 страницы (например, отдельную страницу «Требования к тезисам»), можно добавить файлы `abstracts.html`, `committee.html` и т.п., и добавить ссылки в навигацию.
-
+- All paths are **relative**, compatible with GitHub Pages project sites.
+- No build tools, no external JS/CSS dependencies.
