@@ -315,7 +315,7 @@ a:hover{ text-decoration: none; }
   padding: var(--s-3);
   box-shadow: var(--shadow-soft);
 }
-.logo-strip img{
+.logo-strip:not(.logo-mosaic) img{
   width: 100%;
   height: auto;
   opacity: 0.92;
@@ -781,4 +781,30 @@ details ul{
 
 @media (prefers-reduced-motion: reduce){
   *{ scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+
+/* ====== Logo mosaic (hero) ====== */
+.logo-strip.logo-mosaic{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+  align-items: center;
+  justify-items: center;
+}
+.logo-strip.logo-mosaic .logo-item{
+  width: 100%;
+  max-width: 260px;
+  height: 78px;
+  object-fit: contain;
+  opacity: 0.96;
+  filter: saturate(1.05);
+}
+/* Boost the two right-side logos to match the visual weight of the crests */
+.logo-strip.logo-mosaic .logo-item.logo-boost{
+  transform: scale(1.10);
+}
+@media (max-width: 520px){
+  .logo-strip.logo-mosaic{ gap: var(--s-2); }
+  .logo-strip.logo-mosaic .logo-item{ height: 70px; max-width: 240px; }
 }
