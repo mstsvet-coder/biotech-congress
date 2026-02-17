@@ -59,6 +59,9 @@ a:hover{ text-decoration: none; }
 
 .mono{ font-variant-numeric: tabular-nums; }
 
+.muted{ color: var(--muted); }
+.muted-2{ color: var(--muted-2); }
+
 .visually-hidden{
   position:absolute !important;
   width:1px; height:1px;
@@ -280,7 +283,7 @@ a:hover{ text-decoration: none; }
   color: var(--muted);
   margin: 0 0 var(--s-4);
 }
-.hero .cta-row{
+.cta-row{
   display: flex;
   gap: var(--s-2);
   flex-wrap: wrap;
@@ -315,7 +318,7 @@ a:hover{ text-decoration: none; }
   padding: var(--s-3);
   box-shadow: var(--shadow-soft);
 }
-.logo-strip:not(.logo-mosaic) img{
+.logo-strip:not(.logo-stack) img{
   width: 100%;
   height: auto;
   opacity: 0.92;
@@ -511,6 +514,12 @@ a:hover{ text-decoration: none; }
 .callout h3{ margin: 0 0 10px; font-size: 18px; }
 .callout ul{ margin: 0; padding-left: 18px; color: var(--muted); }
 .callout .row{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s-3);
+  align-items: start;
+}
+.callout-inner{
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--s-3);
@@ -757,6 +766,8 @@ details ul{
   .logo-panel{ order: 2; }
   .grid-3{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
+  .callout-inner{ grid-template-columns: 1fr; }
+  .callout .row{ grid-template-columns: 1fr; }
   .speakers-grid{ grid-template-columns: repeat(2,1fr); }
   .venue{ grid-template-columns: 1fr; }
   .mini-grid{ grid-template-columns: 1fr; }
@@ -784,27 +795,28 @@ details ul{
 }
 
 
-/* ====== Logo mosaic (hero) ====== */
-.logo-strip.logo-mosaic{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+/* ====== Logo stack (hero) ====== */
+.logo-strip.logo-stack{
+  display: flex;
+  flex-direction: column;
   gap: var(--s-3);
   align-items: center;
-  justify-items: center;
+  justify-content: center;
 }
-.logo-strip.logo-mosaic .logo-item{
+.logo-strip.logo-stack .logo-item{
   width: 100%;
-  max-width: 260px;
-  height: 78px;
+  max-width: 360px;
+  height: 72px;
   object-fit: contain;
   opacity: 0.96;
   filter: saturate(1.05);
 }
-/* Boost the two right-side logos to match the visual weight of the crests */
-.logo-strip.logo-mosaic .logo-item.logo-boost{
-  transform: scale(1.10);
+/* Boost the wide text-heavy logos so their optical size matches the crests */
+.logo-strip.logo-stack .logo-item.logo-boost{
+  height: 86px;
 }
 @media (max-width: 520px){
-  .logo-strip.logo-mosaic{ gap: var(--s-2); }
-  .logo-strip.logo-mosaic .logo-item{ height: 70px; max-width: 240px; }
+  .logo-strip.logo-stack{ gap: var(--s-2); }
+  .logo-strip.logo-stack .logo-item{ height: 64px; max-width: 320px; }
+  .logo-strip.logo-stack .logo-item.logo-boost{ height: 76px; }
 }
