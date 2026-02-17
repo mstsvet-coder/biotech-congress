@@ -1,37 +1,54 @@
-# Landing v4 (GitHub Pages)
+# Landing v5 (GitHub Pages) — Dark Premium
 
-Лендинг конференции/конгресса для размещения на GitHub Pages.
+Статичный лендинг для GitHub Pages (без сборки/Node).  
+**Главная страница — EN**, русская версия — `/ru/`.  
+Дополнительно: `/en/` сделан как редирект на главную (на случай старых ссылок).
 
 ## Структура
-- Основная (английская) версия: `/index.html`
-- Русская версия: `/ru/index.html`
-- Совместимость со старой ссылкой: `/en/` перенаправляет на главную
+- EN (main): `index.html`
+- RU: `ru/index.html`
+- Assets: `assets/`
+  - CSS: `assets/css/style.css`
+  - JS: `assets/js/main.js`
+  - Images: `assets/img/`
+  - OG images: `assets/og/`
+  - Docs (templates, requirements): `assets/docs/`
 
-## Быстрый запуск на GitHub Pages
-1. Загрузите содержимое архива в корень репозитория (чтобы `index.html` лежал в корне).
-2. В репозитории откройте: **Settings → Pages**
-   - Source: *Deploy from a branch*
-   - Branch: `main`
-   - Folder: `/(root)`
-3. После деплоя сайт будет доступен по адресу вида:
-   `https://<username>.github.io/<repo>/`
+## Публикация на GitHub Pages (быстро)
+1. Загрузите содержимое архива в корень репозитория (так, чтобы `index.html` лежал в корне).
+2. GitHub → **Settings → Pages**
+3. **Build and deployment**:
+   - Source: `Deploy from a branch`
+   - Branch: `main` (или `master`)
+   - Folder: `/ (root)`
+4. Сохранить. GitHub Pages покажет URL опубликованного сайта.
 
-## Что обычно правят
-- Ссылки на формы регистрации/подачи материалов (Яндекс‑формы) — в `index.html` и `ru/index.html`
-- Контактный e‑mail: `biotech-congress@yandex.ru` (замените при необходимости в обоих файлах)
+## Как подключить свой домен (если понадобится)
+GitHub → Settings → Pages → Custom domain → указать домен → сохранить.  
+У регистратора домена добавить DNS записи (обычно A/AAAA или CNAME) по инструкции GitHub.
 
-## Файлы для авторов
-- Шаблоны:
-  - `assets/docs/abstract_template_en.docx`
-  - `assets/docs/abstract_template_ru.docx`
-- Требования (PDF):
-  - `assets/docs/requirements_en.pdf`
-  - `assets/docs/requirements_ru.pdf`
+## Где менять контент
+- Тексты EN: `index.html`
+- Тексты RU: `ru/index.html`
+- Цвета/радиусы/отступы: `assets/css/style.css` (в начале файла есть переменные `:root`)
+- Таймлайн/вкладки: `index.html` / `ru/index.html` (блок `#program`)
+- Логотипы партнёров: `assets/img/` + секция `#partners`
 
-## OG‑картинка (превью для Telegram/WhatsApp)
-- `assets/og/og.png` (подключена в `<head>` обеих страниц)
+## OG-картинка (превью в Telegram/WhatsApp)
+- EN: `assets/og/og-en.jpg`
+- RU: `assets/og/og-ru.jpg`
 
-## Карта (Место проведения)
-Используется встраивание OpenStreetMap + кнопка «Открыть в Яндекс.Картах».
-Координаты и адрес редактируются в секции `#venue`.
+Если меняете URL сайта (например, подключили домен), обновите в `<head>`:
+- `og:url`, `og:image`, `canonical`
 
+## Про фотографии спикеров
+В v5 для карточек “Experts & speakers” используются **нейтральные аватары‑плейсхолдеры** (генерируемые, без внешних прав).  
+Если захотите заменить на реальные фото — положите файлы в `assets/img/speakers/` и замените пути в HTML.
+
+## Контакты и формы
+- Email: `biotech-congress@yandex.ru`
+- Форма участника: https://forms.yandex.ru/u/69732daf95add52784b45f68/
+- Форма подачи материалов: https://forms.yandex.ru/u/697336be02848f5046ce04f7/
+
+---
+Generated on 2026-02-17.

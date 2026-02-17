@@ -1,25 +1,44 @@
-(() => {
-  // Minimal JS: improves anchor navigation with sticky header.
-  const header = document.querySelector('.site-header');
-  const headerH = () => header ? header.getBoundingClientRect().height : 0;
+/* v5 — small progressive enhancement (no frameworks) */
 
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    const id = a.getAttribute('href');
-    if (!id || id === '#') return;
-    const el = document.querySelector(id);
-    if (!el) return;
+(function () {
+  "use strict";
 
-    e.preventDefault();
-    const y = window.scrollY + el.getBoundingClientRect().top - headerH() - 12;
-    window.history.pushState(null, '', id);
-    window.scrollTo({ top: y, behavior: 'smooth' });
+  // Tabs (program)
+  document.querySelectorAll("[data-tabs]").forEach((tabsRoot) => {
+    const buttons = tabsRoot.querySelectorAll("[role='tab']");
+    const panels = tabsRoot.querySelectorAll("[role='tabpanel']");
 
-    // Move keyboard focus after scrolling (accessibility)
-    setTimeout(() => {
-      el.setAttribute('tabindex', '-1');
-      el.focus({ preventScroll: true });
-    }, 350);
+    function activate(id) {
+      buttons.forEach((b) => {
+        const isActive = b.getAttribute("data-tab") === id;
+        b.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+      panels.forEach((p) => {
+        const isActive = p.getAttribute("data-panel") === id;
+        p.hidden = !isActive;
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => activate(btn.getAttribute("data-tab")));
+    });
+
+    // default
+    if (buttons.length) activate(buttons[0].getAttribute("data-tab"));
+  });
+
+  // Copy address button
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    const text = btn.getAttribute("data-copy");
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        const old = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(() => (btn.textContent = old), 1200);
+      } catch (e) {
+        window.prompt("Copy this:", text);
+      }
+    });
   });
 })();
