@@ -1,4 +1,4 @@
-/* v3 — Static landing for GitHub Pages
+/* v4 — Conference landing for GitHub Pages
    Philosophy: clean, fast, readable. No external dependencies.
 */
 
@@ -355,6 +355,7 @@ a:hover{ opacity:.92; }
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
+.cards-2{ grid-template-columns: repeat(2, 1fr); }
 .card{
   background: var(--card);
   border: 1px solid var(--line);
