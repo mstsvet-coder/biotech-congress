@@ -24,7 +24,11 @@
     });
 
     // default
-    if (buttons.length) activate(buttons[0].getAttribute("data-tab"));
+    if (buttons.length) {
+      const def = tabsRoot.getAttribute("data-default");
+      const first = buttons[0].getAttribute("data-tab");
+      activate(def || first);
+    }
   });
 
   // Copy address button
