@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mstsvet-coder.github.io/biotech-congress/sitemap.xml

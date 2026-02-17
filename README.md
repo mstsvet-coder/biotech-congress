@@ -1,30 +1,37 @@
-# Biotech & Food Tech 2026 — static site (RU + EN)
+# Landing v3 (GitHub Pages)
 
-This folder contains a **pure static** landing site for GitHub Pages:
+Статический лендинг для:
+- Конгресс «Биотехнология и пищевые технологии»
+- Конференция «Школа пивоваров»
 
-- `index.html` — Russian (main)
-- `en/index.html` — English
-- `assets/` — CSS + images
-
-## Upload to GitHub Pages (quick)
-
-1. Create / open your repository (e.g., `biotech-congress`).
-2. Upload **all files from this folder** to the repository root (so `index.html` is in the root).
-3. Go to **Settings → Pages**:
-   - Source: *Deploy from a branch*
+## Быстрый запуск на GitHub Pages
+1. Загрузите содержимое архива в корень репозитория (чтобы `index.html` лежал в корне).
+2. В репозитории: **Settings → Pages**
+   - Source: Deploy from a branch
    - Branch: `main`
-   - Folder: `/ (root)`
-4. Save.
+   - Folder: `/(root)`
+3. Ссылка появится на этой же странице Pages.
 
-Your site will appear at:
+## Языки
+- Русская версия: `/index.html`
+- Английская версия: `/en/index.html`
 
-`https://<username>.github.io/<repo>/`
+## Куда править ссылки
+Формы и контакты находятся в файле:
+- `index.html` и `en/index.html`
 
-English page:
+Ссылки на формы (Яндекс-формы) сейчас стоят как в предыдущей версии проекта.
+Если вы поменяете формы — просто замените URL в кнопках:
+- «Форма участника»
+- «Подача материалов»
 
-`https://<username>.github.io/<repo>/en/`
+## OG-картинка (превью в Telegram/WhatsApp)
+- Файл: `assets/og/og.png`
+- Сейчас в `<meta property="og:image">` задан абсолютный URL под GitHub Pages:
+  `https://mstsvet-coder.github.io/biotech-congress/assets/og/og.png`
 
-## Notes
+Если подключите собственный домен — замените `og:url` и `og:image` на новый домен.
 
-- All paths are **relative**, compatible with GitHub Pages project sites.
-- No build tools, no external JS/CSS dependencies.
+## Технические заметки
+- Все пути внутри сайта сделаны относительными, чтобы работало и на `...github.io/repo/`, и на собственном домене.
+- Детальные требования к оформлению вынесены в PDF: `assets/docs/requirements_ru.pdf`
